@@ -52,7 +52,7 @@ function GetWorkingHours(empCheck)
     }
 }
 empHrs=GetWorkingHours(empCheck);
-console.log("Employee Wage: "+empHrs);
+console.log("Employee Working Hrs: "+empHrs);
 
 //UC4 
 //Calculate monthly wage
@@ -64,3 +64,25 @@ for(let day=0; day<NO_OF_WORKING_DAYS; day++)
 }
 empWage=empHrs*WAGE_PER_HOUR;
 console.log("Total Hrs: "+empHrs+" Employee Wage: "+empWage);
+
+//UC5 
+// max days and hours in month
+let dailyWages = [];
+const MAX_HRS_IN_MONTH=100;
+let dailyEmpHours = 0;
+let totalEmpHrs=0;
+let totalWorkingDays=0;
+while(totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NO_OF_WORKING_DAYS)
+{
+    totalWorkingDays++;
+    empCheck=Math.floor(Math.random()*10)%3;
+    dailyEmpHours = GetWorkingHours(empCheck);
+    totalEmpHrs += dailyEmpHours;
+    dailyWages.push(dailyEmpHours*WAGE_PER_HOUR);
+
+}
+empWage=totalEmpHrs*WAGE_PER_HOUR;
+console.log("Total No of Days: "+totalWorkingDays+" Total Hrs Worked: "+totalEmpHrs+ "Total Employee Wage: "+empWage);
+
+// UC6 Store Daily Wage
+dailyWages.forEach(p=> console.log("DailyWage = "+ p));
